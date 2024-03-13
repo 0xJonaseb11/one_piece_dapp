@@ -101,7 +101,28 @@ constructor (
     //// ADD RANDOMNESS TO THE CONTRACT ///////////////
     //////////////////////////////////////////////////
 
-    
+    function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override {
+        // get address of the nft owner w/ request ID
+        address nftOwner = requestIdToSender[requestId];
+
+        // get character ID determined based on user's traits
+        uint256 traitBasedCharacterId = userCharacter[nftOwner];
+
+        // retrieve the first number from provided array
+        uint256 randomValue = randomWords[0];
+
+        // Calculate the random character Id based on random value
+        uint256 randomCharacterId = (randomValue % 5);
+
+        // calculate final character ID
+        uint256 finalCharacterId = (traitBasedCharacterId + randomCharacterId) % 5;
+
+        // Mint the nft to the owner with final character ID
+        mintNft(nftOwner, finalCharacterId);
+
+    }
+
+
 
 
 
