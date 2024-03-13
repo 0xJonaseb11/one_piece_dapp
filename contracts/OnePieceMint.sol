@@ -76,6 +76,31 @@ constructor (
     }
 
     // request nft function
+    function requestNFT(uint256[5] memory answers) public {
+        // determine character and store it based on provided answers
+        userCharacter[msg.sender] = determineCharachter(answers);
+
+        // request random words from VRF coordinator
+        uint256 requestId = i_vrfCoordinator.requestRandomWords(
+            i_keyHash,
+            i_subscriptionId,
+            3,
+            i_callbackGasLimit,
+            1
+        );
+
+        // map requestId to the sender's address
+        requestIdToSender[requestId] = msg.sender;
+
+        // Emit event to log request for the NFT
+        emit NFTRequested(requestId, msg.sender);
+    }
+
+
+    ////////////////////////////////////////////////////
+    //// ADD RANDOMNESS TO THE CONTRACT ///////////////
+    //////////////////////////////////////////////////
+
     
 
 
