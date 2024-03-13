@@ -123,6 +123,29 @@ constructor (
     }
 
 
+    /////////// DETERMINE CHARACTER///////////
+    /////////////////////////////////////////
+
+    function determineCharacter(uint256[5] memory answers) private returns(uint256) {
+        // initilize character ID
+        uint256 characterId = 0;
+
+        for (uint256 i = 0; i < 5; i++) {
+            characterId += answers[i];
+        }
+
+        // Calculate the final character ID by taking the remainder when divided by 5 and adding 1
+        characterId = (characterId % 5) + 1;
+
+        // Emit event to log the determination of character traits
+        emit CharacterTraitDetermined(characterId);
+
+        return characterId;
+
+
+    }
+
+
 
 
 
