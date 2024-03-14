@@ -10,16 +10,17 @@ function privateKey() {
 
 module.exports = {
   networks: {
+    hardhat: {},
     mumbai: {
-      url: 'https://polygon-mumbai-pokt.nodies.app',
+      url: "https://polygon-mumbai-pokt.nodies.app",
       accounts: privateKey(),
     },
     sepolia: {
-      url: 'https://eth-sepolia.public.blastapi.io',
+      url: "https://eth-sepolia.public.blastapi.io",
       accounts: privateKey(),
     },
     arbitrum_sepolia: {
-      url: 'https://sepolia-rollup.arbitrum.io/rpc',
+      url: "https://sepolia-rollup.arbitrum.io/rpc",
       accounts: privateKey(),
     }
   },
@@ -29,10 +30,12 @@ module.exports = {
       optimizer: {
         enabled: true,
         runs: 1000,
-      }
-    }
-  },
+      },
+    },
+  },  
   etherscan: {
-    apikey: process.env.API_KEY,
+    apiKey: {
+      arbitrumSepolia: process.env.API_KEY,
+    } 
   },
 };

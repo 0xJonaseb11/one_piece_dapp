@@ -11,3 +11,17 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
+
+## `Contract deployment`
+
+```sh
+npx hardhat run scripts/deploy.js --network arbitrum_sepolia
+```
+
+## `Contract verification`
+
+```sh
+npx hardhat verify --constructor-args arguments.js <deployed_contract_address> --network arbitrum_sepolia
+```
+
+-------------------
