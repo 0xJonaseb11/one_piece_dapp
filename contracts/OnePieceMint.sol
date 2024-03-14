@@ -141,13 +141,53 @@ constructor (
         emit CharacterTraitDetermined(characterId);
 
         return characterId;
+        
+    }
+        ////// OVERRIDE FUNCTIONS ///////////
+        ////////////////////////////////////
+
+        /**
+        * Override the transfer functionality of ERC721 to make it soulbound 
+        * This function is called before every token transfer to enforce soulbound
+        */
+
+        function _beforeTokenTransfer(address from, address to, uint256 firstTokenId, uint256 batchSize) internal virtual override {
+            //call its parent contract
+            super._beforeTokenTransfer(from, to, tokenId, batchSize);
+
+            // Ensure that tokens are only transferred to or from zero address
+            require(from == address(0) || to == address(0), "ERROR, This address is not supported");
+
+        }
+
+        /**
+        * Override the tokenURI function to ensure compatibility with ERC721URIStorage 
+        */
+
+        function tokenURI(uint256 tokenId) public view override (ERC721, ERC721URIStorage) returns(string memory) {
+            //call parent contract
+            return super.tokenURI(tokenId);
+        }
+
+        /**
+        * Override the supportsInterface to ensure compatibility with ERC721URIStorage 
+        */
+        function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721URIStorage) returns(bool) {
+            // call the parent contract
+            return super.supportsInterface(interfaceId);
+        }
+
+        /**
+        * Override the _burn function to ensure compatibility with ERC721URIStorage 
+        */
+
+        function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+            // call parent contract
+            return super._burn(tokenId);
+        }
 
 
     }
 
 
 
-
-
-
-}
