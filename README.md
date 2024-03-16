@@ -25,3 +25,33 @@ npx hardhat verify --constructor-args arguments.js <deployed_contract_address> -
 ```
 
 -------------------
+
+## `Installing and enabling grapgh protocol`
+
+```sh
+cd client
+```
+
+```sh
+# with npm
+npm install -g @graphprotocol/graph-cli
+# eith yarn
+yarn global add @graphprotocol/graph-cli
+```
+
+### `Initialize the subgraph`
+
+```sh
+graph init --studio one_piece_dapp
+```
+
+### `Authenticate and deploy`
+
+```sh
+# authenticate in cli
+graph auth --studio fd9731a523ad7fccab9c0617ccecb1f0
+# Enter subgraph
+cd one_piece_dapp
+# build subgraph
+graph codegen && graph build
+```

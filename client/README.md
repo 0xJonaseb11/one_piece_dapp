@@ -82,3 +82,15 @@ yarn global add @graphprotocol/graph-cli
 
 ```sh
 graph init --studio one_piece_dapp
+```
+
+### `Authenticate and deploy`
+
+```sh
+# authenticate in cli
+graph auth --studio fd9731a523ad7fccab9c0617ccecb1f0
+# Enter subgraph
+cd one_piece_dapp
+# build subgraph
+graph codegen && graph build
+```
