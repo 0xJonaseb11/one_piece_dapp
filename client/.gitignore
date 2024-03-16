@@ -1,0 +1,6 @@
+# depedencies
+node_modules
+
+.env
+
+build/
