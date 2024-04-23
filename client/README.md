@@ -74,7 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ```sh
 # with npm
 npm install -g @graphprotocol/graph-cli
-# eith yarn
+# with yarn
 yarn global add @graphprotocol/graph-cli
 ```
 
